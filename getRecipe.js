@@ -29,7 +29,7 @@ function getIngredients(data) {
 }
 
 function readFile(item) {
-   const fileName = item + ".json";
+    const fileName = item + ".json";
 
     return fs.readFileSync(fileName, "utf-8");
 }
