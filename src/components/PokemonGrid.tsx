@@ -1,4 +1,5 @@
 import React from 'react';
+import BulbasaurGif from '../assets/bulbasaur.gif'; // Import the image
 
 interface Pokemon {
   id: number;
@@ -13,20 +14,20 @@ const PokemonGrid: React.FC = () => {
   ];
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+    <div className="flex flex-wrap justify-center gap-4">
       {pokemons.map((pokemon) => (
-        <div key={pokemon.id} className="card shadow-lg compact side bg-base-100">
-          <div className="flex-row items-center space-x-4 card-body">
-            <div>
-              <div className="avatar">
-                <div className="rounded-full shadow w-14 h-14">
-                  {/* Pokemon Image */}
+        <div key={pokemon.id} className="card w-96 bg-base-100 shadow-xl">
+          <figure className="px-10 pt-10">
+            <img src={BulbasaurGif} alt={pokemon.name} className="rounded-xl" />
+          </figure>
+          <div className="card-body items-center text-center">
+            <h2 className="card-title">{pokemon.name}</h2>
+            <div className="card-actions">
+              {pokemon.types.map((type, index) => (
+                <div key={index} className={`badge badge-${type.toLowerCase()} capitalize`}>
+                  {type}
                 </div>
-              </div>
-            </div>
-            <div>
-              <h2 className="card-title">{pokemon.name}</h2>
-              <p className="text-base-content text-opacity-40">{pokemon.types.join(' · ')}</p>
+              ))}
             </div>
           </div>
         </div>
