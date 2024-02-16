@@ -1,5 +1,6 @@
 import React from 'react';
-import BulbasaurGif from '../assets/bulbasaur.gif'; // Import the image
+import Image from 'next/image'; // Import the Next.js Image component
+import BulbasaurGif from '../assets/bulbasaur.gif';
 
 interface Pokemon {
   id: number;
@@ -9,7 +10,7 @@ interface Pokemon {
 
 const PokemonGrid: React.FC = () => {
   const pokemons: Pokemon[] = [
-    { id: 1, name: 'Bulbasaur', types: ['Grass', 'Poison'] },
+    { id: 1, name: 'Bulbasaur', types: ['Grass', 'Poison']},
     // ... more pokemon
   ];
 
@@ -18,7 +19,8 @@ const PokemonGrid: React.FC = () => {
       {pokemons.map((pokemon) => (
         <div key={pokemon.id} className="card w-96 bg-base-100 shadow-xl">
           <figure className="px-10 pt-10">
-            <img src={BulbasaurGif} alt={pokemon.name} className="rounded-xl" />
+            {/* Use the Image component for optimized image rendering */}
+            <Image src={BulbasaurGif} alt={pokemon.name} width={150} height={150} className="rounded-xl" />
           </figure>
           <div className="card-body items-center text-center">
             <h2 className="card-title">{pokemon.name}</h2>
